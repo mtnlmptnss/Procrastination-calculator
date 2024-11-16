@@ -1,0 +1,179 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+}
+.container h1, .container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+.container p, .container span, .container a, .container label {
+  color: #ffffff;
+}
+.container__left, .container__right {
+  padding: 2rem;
+  flex: 1;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  margin: 1.5rem;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+.container__left:hover, .container__right:hover {
+  box-shadow: 0 0 20px rgba(140, 3, 252, 0.8);
+}
+.container__left {
+  background-color: rgba(26, 26, 26, 0.9);
+}
+.container__left input, .container__left select {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: #333333;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+.container__left input:focus, .container__left select:focus {
+  border-color: #8c03fc;
+  box-shadow: 0 0 0 3px rgba(140, 3, 252, 0.2);
+  outline: none;
+}
+.container__left label, .container__left input, .container__left select {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.container__left button {
+  font-size: 18px;
+  padding: 12px 24px;
+  margin-right: 10px;
+  background-color: #8c03fc;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.container__left button:hover {
+  background-color: #a335fd;
+}
+.container__right {
+  background-color: #444444;
+  border: 2px solid #8c03fc;
+  padding: 20px;
+  animation: fadeInRight 0.5s ease;
+}
+.container__right h2 {
+  margin-bottom: 20px;
+}
+.container__right .results div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.container__right .results div::before {
+  font-size: 24px;
+  margin-right: 12px;
+}
+.container__right .results div:nth-child(1)::before {
+  content: "⏱️";
+}
+.container__right .results div:nth-child(2)::before {
+  content: "😰";
+}
+.container__right .results div:nth-child(3)::before {
+  content: "💼";
+}
+.container__right .results div:nth-child(4)::before {
+  content: "🌟";
+}
+.container__right .results div:nth-child(5)::before {
+  content: "😓";
+}
+.container__right .results div span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #8c03fc;
+}
+.container #savedTasks {
+  margin-top: 2rem;
+}
+.container #savedTasks h2 {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+.container #savedTasks .task-history {
+  list-style: none;
+  padding: 0;
+}
+.container #savedTasks .task-history .task-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(145deg, #8c03fc, #7002ca);
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(112, 2, 202, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+.container #savedTasks .task-history .task-item:hover {
+  transform: translateX(0.5rem) scale(1.02);
+  box-shadow: -5px 5px 15px rgba(112, 2, 202, 0.4);
+}
+.container #savedTasks .task-history .task-item .task-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+.container #savedTasks .task-history .task-item .task-results {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .container__left, .container__right {
+    margin: 1rem 0;
+    width: 100%;
+  }
+}

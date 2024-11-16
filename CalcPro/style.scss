@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+$primary-color: #8c03fc;
+$primary-light: lighten($primary-color, 10%);
+$primary-dark: darken($primary-color, 10%);
+$bg-left: #1a1a1a;
+$bg-right: #2a2a2a;
+$text-primary: #ffffff;
+$text-secondary: #ffffff;
+$shadow-color: rgba(0, 0, 0, 0.3);
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$border-radius: 12px;
+$border-radius-sm: 8px;
+
+$transition-fast: all 0.2s ease;
+$transition-normal: all 0.3s ease;
+$transition-slow: all 0.4s ease;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, $bg-left, $bg-right);
+
+  h1,
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: $text-primary;
+  }
+
+  p,
+  span,
+  a,
+  label {
+    color: $text-secondary;
+  }
+
+  &__left,
+  &__right {
+    padding: $spacing-lg;
+    flex: 1;
+    border-radius: $border-radius;
+    box-shadow: 0 4px 20px $shadow-color;
+    margin: $spacing-md;
+    backdrop-filter: blur(5px);
+    transition: $transition-normal;
+
+    &:hover {
+      box-shadow: 0 0 20px rgba($primary-color, 0.8);
+    }
+  }
+
+  &__left {
+    background-color: rgba($bg-left, 0.9);
+
+    input,
+    select {
+      width: 100%;
+      padding: $spacing-sm;
+      border: 2px solid transparent;
+      border-radius: $border-radius-sm;
+      background: #333333;
+      color: #ffffff;
+      transition: $transition-fast;
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.2);
+        outline: none;
+      }
+    }
+
+    label,
+    input,
+    select {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 24px;
+      margin-right: 10px;
+      background-color: $primary-color;
+      border: none;
+      border-radius: $border-radius;
+      color: white;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &:hover {
+        background-color: $primary-light;
+      }
+    }
+  }
+
+  &__right {
+    background-color: lighten($bg-right, 10%);
+    border: 2px solid $primary-color;
+    padding: 20px;
+    animation: fadeInRight 0.5s ease;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .results div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      &::before {
+        font-size: 24px;
+        margin-right: 12px;
+      }
+
+      &:nth-child(1)::before {
+        content: "⏱️";
+      }
+      &:nth-child(2)::before {
+        content: "😰";
+      }
+      &:nth-child(3)::before {
+        content: "💼";
+      }
+      &:nth-child(4)::before {
+        content: "🌟";
+      }
+      &:nth-child(5)::before {
+        content: "😓";
+      }
+
+      span {
+        font-size: 20px;
+        font-weight: bold;
+        color: $primary-color;
+      }
+    }
+  }
+
+  #savedTasks {
+    margin-top: $spacing-lg;
+
+    h2 {
+      color: $text-primary;
+      margin-bottom: $spacing-md;
+    }
+
+    .task-history {
+      list-style: none;
+      padding: 0;
+
+      .task-item {
+        padding: $spacing-sm;
+        margin-bottom: $spacing-sm;
+        background: linear-gradient(145deg, $primary-color, $primary-dark);
+        border-radius: $border-radius-sm;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: $transition-normal;
+        box-shadow: 0 3px 10px rgba($primary-dark, 0.3);
+        animation: slideIn 0.3s ease-out;
+
+        &:hover {
+          transform: translateX($spacing-xs) scale(1.02);
+          box-shadow: -5px 5px 15px rgba($primary-dark, 0.4);
+        }
+
+        .task-title {
+          font-weight: bold;
+          font-size: 1.1rem;
+          margin-right: $spacing-sm;
+        }
+
+        .task-results {
+          font-size: 0.9rem;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: $spacing-sm;
+
+    &__left,
+    &__right {
+      margin: $spacing-sm 0;
+      width: 100%;
+    }
+  }
+}

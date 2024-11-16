@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" viewport="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>CalculatorProcrastination</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container__left">
+        <h1>Write here your data</h1>
+
+        <form id="taskForm">
+          <div class="forma">
+            <label for="title">Name of the task:</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+
+          <div class="forma">
+            <label for="complexity">Complexity of the task:</label>
+            <select id="complexity" name="complexity" required>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+              <option value="Impossible">Impossible</option>
+            </select>
+          </div>
+
+          <div class="forma">
+            <label for="deadline">Deadline time:</label>
+            <input type="datetime-local" id="deadline" required />
+          </div>
+
+          <div class="forma">
+            <label for="estimatedTime">Estimated time (in hours):</label>
+            <input
+              type="number"
+              id="estimatedTime"
+              name="estimatedTime"
+              min="1"
+              required
+            />
+          </div>
+
+          <div class="forma">
+            <label for="priority">Priority of the task:</label>
+            <select id="priority" name="priority" required>
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="High">High</option>
+              <option value="Urgent">Urgent</option>
+            </select>
+          </div>
+
+          <div class="forma">
+            <label for="isInteresting">Is it interesting?</label>
+            <input type="checkbox" id="isInteresting" name="isInteresting" />
+          </div>
+
+          <div class="forma">
+            <button type="submit">Calculate</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="container__right">
+        <h1>Get the results</h1>
+
+        <div class="results">
+          <div>
+            <label>Procrastination time:</label>
+            <span id="procrastinationTime">-</span>
+          </div>
+
+          <div>
+            <label>Panic time:</label>
+            <span id="panicTime">-</span>
+          </div>
+
+          <div>
+            <label>Actual work time:</label>
+            <span id="actualWorkTime">-</span>
+          </div>
+
+          <div>
+            <label>Efficiency:</label>
+            <span id="efficiency">-</span>
+          </div>
+
+          <div>
+            <label>Stress level:</label>
+            <span id="stressLevel">-</span>
+          </div>
+        </div>
+        <div id="savedTasks">
+          <h1>Saved tasks</h1>
+          <ol id="taskHistory" class="task-history"></ol>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="types.js"></script>
+    <script type="module" src="calculator.js"></script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
